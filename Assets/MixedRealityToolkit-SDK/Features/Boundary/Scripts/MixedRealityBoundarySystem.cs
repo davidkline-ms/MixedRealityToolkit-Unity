@@ -2,6 +2,8 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using Microsoft.MixedReality.Toolkit.Internal.Definitions.Utilities;
+using Microsoft.MixedReality.Toolkit.Internal.EventDatum.Boundary;
+using Microsoft.MixedReality.Toolkit.Internal.EventDatum.Input;
 using Microsoft.MixedReality.Toolkit.Internal.Interfaces.BoundarySystem;
 using Microsoft.MixedReality.Toolkit.Internal.Managers;
 using Microsoft.MixedReality.Toolkit.Internal.Utilities;
@@ -32,6 +34,8 @@ namespace Microsoft.MixedReality.Toolkit.SDK.BoundarySystem
         /// </summary>
         private void InitializeInternal()
         {
+            boundaryEventData = new BoundaryEventData(EventSystem.current);
+
             Scale = MixedRealityManager.Instance.ActiveProfile.TargetExperienceScale;
 
             if (MixedRealityManager.Instance.ActiveProfile.IsPlatformBoundaryRenderingEnabled)
@@ -109,6 +113,20 @@ namespace Microsoft.MixedReality.Toolkit.SDK.BoundarySystem
         /// <inheritdoc />
         public string SourceName { get; } = "Mixed Reality Boundary System";
 
+        public void RaiseBoundaryVisualizationChanged()
+        {
+            boundaryEventData.Initialize(this, EnablePlatformBoundaryRendering);
+
+            HandleEvent(boundaryEventData, OnVisualizationChanged);
+        }
+
+        private static readonly ExecuteEvents.EventFunction<IMixedRealityBoundaryHandler> OnVisualizationChanged =
+                delegate (IMixedRealityBoundaryHandler handler, BaseEventData eventData)
+                {
+                    var casted = ExecuteEvents.ValidateEventData<BoundaryEventData>(eventData);
+                    handler.OnBoundaryVisualizationChanged(casted);
+                };
+
         #endregion IMixedRealityEventSource Implementation
 
         #region IMixedRealityBoundarySystem Implementation
@@ -149,6 +167,8 @@ namespace Microsoft.MixedReality.Toolkit.SDK.BoundarySystem
                         Object.Destroy(currentFloorPlane);
                     }
                 }
+
+                RaiseBoundaryVisualizationChanged();
             }
         }
 
@@ -292,6 +312,8 @@ namespace Microsoft.MixedReality.Toolkit.SDK.BoundarySystem
         private GameObject currentPlayArea;
 
         private GameObject currentFloorPlane;
+
+        private BoundaryEventData boundaryEventData;
 
         /// <summary>
         /// Retrieves the boundary geometry and creates the boundary and inscribed play space volumes.
