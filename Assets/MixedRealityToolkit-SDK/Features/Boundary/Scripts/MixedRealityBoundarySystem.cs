@@ -89,7 +89,7 @@ namespace Microsoft.MixedReality.Toolkit.SDK.BoundarySystem
             base.Unregister(listener);
         }
 
-        #endregion
+        #endregion IMixedRealtyEventSystem Implementation
 
         #region IMixedRealityEventSource Implementation
 
