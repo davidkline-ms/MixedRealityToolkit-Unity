@@ -51,6 +51,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         /// <inheritdoc />
         public void OnBoundaryVisualizationChanged(BoundaryEventData eventData)
         {
+            Debug.Log("Boundary viz changed;");
             if (eventData.IsPlatformRenderingEnabled)
             {
                 if (markers.Count == 0)
