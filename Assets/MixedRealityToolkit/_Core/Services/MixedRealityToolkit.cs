@@ -396,7 +396,6 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
                     {
                         if ((ActiveProfile.LoggingLevel & LoggingLevels.Assert) != 0)
                         {
-
                             Debug.Assert(instance.transform.parent == null, "The MixedRealityToolkit should not be parented under any other GameObject!");
                             Debug.Assert(instance.transform.childCount == 0, "The MixedRealityToolkit should not have GameObject children!");
                         }
