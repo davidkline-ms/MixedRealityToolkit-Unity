@@ -33,6 +33,7 @@ namespace Microsoft.MixedReality.Toolkit.Tests
         [Test]
         public void Test02_TestNoMixedRealityConfigurationFound()
         {
+            LogAssert.Expect(LogType.Error, "Critical: The MixedRealityToolkit is not configured with a profile.");
             MixedRealityToolkit.Instance.ActiveProfile = null;
 
             Assert.IsFalse(MixedRealityToolkit.HasActiveProfile);
@@ -176,6 +177,7 @@ namespace Microsoft.MixedReality.Toolkit.Tests
 
             // Validate non-existent component
             MixedRealityToolkit.Instance.GetService(typeof(ITestComponent2), "Test2");
+            LogAssert.Expect(LogType.Warning, $"Unable to find Test2 service.");
         }
 
         [Test]

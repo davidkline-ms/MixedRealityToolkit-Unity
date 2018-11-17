@@ -75,13 +75,8 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
                     UnityEditor.Selection.activeObject = Instance;
                     UnityEditor.EditorGUIUtility.PingObject(Instance);
                 }
-#else
-                // If there is no active profile, the system cannot function. _Always_ display this message in the debug output.
-                if (activeProfile == null)
-                {
-                    Debug.LogError("Critical: The MixedRealityToolkit is not configured with a profile.");
-                }
 #endif // UNITY_EDITOR
+
                 return activeProfile;
             }
             set
@@ -134,8 +129,12 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
         {
             isInitializing = true;
 
-            //If the Mixed Reality Toolkit is not configured, stop.
-            if (ActiveProfile == null) { return; }
+            // If there is no active profile, the system cannot function. _Always_ display this message in the debug output.
+            if (activeProfile == null)
+            {
+                Debug.LogError("Critical: The MixedRealityToolkit is not configured with a profile.");
+                return;
+            }
 
 #if UNITY_EDITOR
             if (ActiveProfile.ActiveServices.Count > 0)
@@ -586,7 +585,7 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
             {
                 if ((ActiveProfile.LoggingLevel & LoggingLevels.Error) != 0)
                 {
-                    Debug.LogError("Unable to add a manager of type null.");
+                    Debug.LogError("Unable to add a service of type null.");
                 }
                 return false;
             }
@@ -1385,7 +1384,7 @@ namespace Microsoft.MixedReality.Toolkit.Core.Services
         private static IMixedRealitySpatialAwarenessSystem spatialAwarenessSystem = null;
 
         /// <summary>
-        /// The current Spatial Awareness System registered with the Mixed Reality Manager.
+        /// The current Spatial Awareness System registered with the Mixed Reality Toolkit.
         /// </summary>
         public static IMixedRealitySpatialAwarenessSystem SpatialAwarenessSystem
         {
