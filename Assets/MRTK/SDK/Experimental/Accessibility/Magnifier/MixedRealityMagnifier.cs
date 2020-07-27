@@ -49,12 +49,6 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         }
 
         /// <inheritdoc />
-        public List<GameObject> PersistentMagnification => new List<GameObject>();
-
-        /// <inheritdoc />
-        public List<GameObject> SuppressedMagnification => new List<GameObject>();
-
-        /// <inheritdoc />
         public void Suspend()
         {
             // todo
@@ -81,29 +75,34 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         {
             ReadProfile();
             // todo
+            base.Initialize();
         }
 
         /// <inheritdoc />
         public override void Reset()
         {
             //todo
+            base.Reset();
         }
 
         /// <inheritdoc />
         public override void Enable()
         {
+            base.Enable();
             // todo
         }
 
         /// <inheritdoc />
         public override void Update()
         {
+            base.Update();
             // todo
         }
 
         /// <inheritdoc />
         public override void LateUpdate()
         {
+            base.LateUpdate();
             // todo
         }
 
@@ -111,12 +110,14 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         public override void Disable()
         {
             // todo
+            base.Disable();
         }
 
         /// <inheritdoc />
         public override void Destroy()
         {
             // todo
+            base.Destroy();
         }
 
         #endregion // IMixedRealityService

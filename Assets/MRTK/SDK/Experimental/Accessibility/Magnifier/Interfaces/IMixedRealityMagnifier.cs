@@ -9,7 +9,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     /// <summary>
     /// Interface that defines the Mixed Reality Toolkit hologram magnifier feature.
     /// </summary>
-    public interface IMixedRealityMagnifier : IMixedRealityService // todo: EventSystem?
+    public interface IMixedRealityMagnifier : IMixedRealityEventSystem
     {
         /// <summary>
         /// Factor by which holograms will be magnified.
@@ -19,18 +19,12 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         /// corresponding amount of magnification. For example, a value of 1.5 makes hologram
         /// 50 percent larger. A magnification factor less than 1.0 is not valid and will not be accepted.
         /// </remarks>
-        // todo: what is a valid max? 5.0? 10.0?
         float MagnificationFactor { get; set; }
 
         /// <summary>
-        /// Collection of objects that be and remain magnified.
+        /// Layer that, when appled to a hologram, suppresses magnification.   
         /// </summary>
-        List<GameObject> PersistentMagnification { get; }
-
-        /// <summary>
-        /// Collection of objects that should never be magnified.
-        /// </summary>
-        List<GameObject> SuppressedMagnification { get; }
+        int SuppressMagnificationLayer { get; set; }
 
         /// <summary>
         /// Suspends magnification behavior.
