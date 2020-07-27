@@ -9,32 +9,27 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     /// Configuration profile for <see cref="MixedRealityMagnifier"/> service.
     /// </summary>
 	[MixedRealityServiceProfile(typeof(IMixedRealityMagnifier))]
-    [CreateAssetMenu(fileName = "DefaultMixedRealityMagnifierProfile", menuName = "Mixed Reality Toolkit/Magnifier Configuration Profile")]
+    [CreateAssetMenu(fileName = "DefaultMixedRealityMagnifierProfile", menuName = "Mixed Reality Toolkit/Profiles/Magnifier Configuration Profile")]
     public class MixedRealityMagnifierProfile : BaseMixedRealityProfile
     {
         [SerializeField]
         [Tooltip("The magnification factor to apply to holograms. Ex: 1.5 magnifies by 50%.")]
+        [Range(1.0f, 5.0f)]
         private float magnificationFactor = 1.5f;
 
         /// <summary>
         /// The magnification factor to apply to holograms.
         /// </summary>
-        /// <remarks>
-        /// A value of 1.5 zooms the hologram by 50 percent.
-        /// </remarks>
         public float MagnificationFactor => magnificationFactor;
 
-        //[PhysicsLayer]
         [SerializeField]
-        [Tooltip("The physics layer to use for suppressing hologram magnification.")]
-        private int suppressMagnificationPhysicsLayer = 30;
+        [Tooltip("Holograms must be at least this distance, in meters, from the user in order to be magnified.")]
+        [Range(0.0f, 10.0f)]
+        public float minDistance = 0.3f;
 
         /// <summary>
-        /// The physics layer to use for suppressing hologramn magnification.
+        /// Holograms must be at least this distance, in meters, from the user in order to be magnified.
         /// </summary>
-        /// <remarks>
-        /// Holograms placed on this layer will not be magnified.
-        /// </remarks>
-        public int SuppressMagnificationPhysicsLayer => suppressMagnificationPhysicsLayer;
+        public float MinimumDistance => minDistance;
     }
 }

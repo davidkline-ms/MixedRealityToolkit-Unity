@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCustomProfile: 1
   magnificationFactor: 1.5
-  suppressMagnificationPhysicsLayer: 30
+  minDistance: 0.3

@@ -16,16 +16,14 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility.Editor
         private const string ProfileDescription = ""; // todo - description
 
         private SerializedProperty magnificationFactor;
-        private SerializedProperty suppressMagnificationPhysicsLayer;
-
-        private readonly GUIContent suppressLayerContent = new GUIContent("Suppression Layer");
+        private SerializedProperty minDistance;
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
             magnificationFactor = serializedObject.FindProperty("magnificationFactor");
-            suppressMagnificationPhysicsLayer = serializedObject.FindProperty("suppressMagnificationPhysicsLayer");
+            minDistance = serializedObject.FindProperty("minDistance");
         }
 
         public override void OnInspectorGUI()
@@ -42,7 +40,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility.Editor
                 EditorGUILayout.Space();
 
                 EditorGUILayout.PropertyField(magnificationFactor);
-                EditorGUILayout.PropertyField(suppressMagnificationPhysicsLayer, suppressLayerContent);
+                EditorGUILayout.PropertyField(minDistance);
             }
         }
 

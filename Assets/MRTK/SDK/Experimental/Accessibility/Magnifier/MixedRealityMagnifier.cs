@@ -37,6 +37,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
             {
                 if (magnificationFactor != value)
                 {
+                    // todo: apply upper bound
                     if (value < 1.0f)
                     {
                         Debug.LogError($"Invalid MagnificationFactor. Valid values must be greater than or equal to 1.0");
@@ -48,15 +49,16 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
             }
         }
 
-        private int suppressMagnificationPhysicsLayer = 30;
+        private float minDistance = 0.3f;
 
         /// <summary>
         /// 
         /// </summary>
-        public int SuppressMagnificationPhysicsLayer
+        public float MinimumDistance
         {
-            get => suppressMagnificationPhysicsLayer;
-            set => SuppressMagnificationPhysicsLayer = value;
+            get => minDistance;
+            // todo apply range
+            set => minDistance = value;
         }
 
         /// <inheritdoc />
