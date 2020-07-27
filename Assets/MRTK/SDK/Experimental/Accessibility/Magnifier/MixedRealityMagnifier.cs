@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit.Utilities;
 using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
@@ -12,8 +12,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     public class MixedRealityMagnifier : BaseCoreSystem, IMixedRealityMagnifier
     {
         public MixedRealityMagnifier(
-            // todo: define profile
-            BaseMixedRealityProfile profile = null) : base(profile)
+            MixedRealityMagnifierProfile profile = null) : base(profile)
         { }
 
         /// <summary>
@@ -21,12 +20,28 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         /// </summary>
         private void ReadProfile()
         {
-            // todo
+            if (MagnifierProfile == null)
+            {
+                Debug.LogError($"{Name} requires a configuration profile to run properly.");
+                return;
+            }
+
+            MagnificationFactor = MagnifierProfile.MagnificationFactor;
+            MinimumDistance = MagnifierProfile.MinimumDistance;
         }
 
         #region IMixedRealityMagnifier
 
         private float magnificationFactor;
+
+        private AutoStartBehavior startupBehavior = AutoStartBehavior.ManualStart;
+
+        /// <inheritdoc />
+        public AutoStartBehavior StartupBehavior
+        {
+            get => startupBehavior;
+            set => startupBehavior = value;
+        }
 
         /// <inheritdoc />
         public float MagnificationFactor
@@ -61,16 +76,32 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
             set => minDistance = value;
         }
 
+        private bool isRunning = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsRunning
+        {
+            get => isRunning;
+            private set => isRunning = value;
+        }
+
+
         /// <inheritdoc />
         public void Suspend()
         {
+            IsRunning = false;
+            suspendedByDisable = false;
+
+            // Return the target hologram to the original scale.
             // todo
         }
 
         /// <inheritdoc />
         public void Resume()
         {
-            // todo
+            IsRunning = true;
         }
 
         #endregion // IMixedRealityMagnifier
@@ -80,49 +111,69 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         /// <inheritdoc/>
         public override string Name { get; protected set; } = "Mixed Reality Magnifier";
 
-        /// <inheritdoc />
-        public override BaseMixedRealityProfile ConfigurationProfile => null; // todo: create a profile with the magnification factor and other settings
+        /// <inheritdoc/>
+        public MixedRealityMagnifierProfile MagnifierProfile => ConfigurationProfile as MixedRealityMagnifierProfile;
 
         /// <inheritdoc />
         public override void Initialize()
         {
-            ReadProfile();
-            // todo
             base.Initialize();
+            ReadProfile();
+            if (StartupBehavior == AutoStartBehavior.AutoStart)
+            {
+                Resume();
+            }
         }
 
         /// <inheritdoc />
         public override void Reset()
         {
-            //todo
             base.Reset();
+            Disable();
+            Initialize();
+            Enable();
         }
 
         /// <inheritdoc />
         public override void Enable()
         {
             base.Enable();
-            // todo
+            if (!IsRunning &&
+                (StartupBehavior == AutoStartBehavior.AutoStart)
+                && suspendedByDisable)
+            {
+                // Resume after we were disabled.
+                Resume();
+            }
         }
 
         /// <inheritdoc />
         public override void Update()
         {
             base.Update();
-            // todo
+            
+            if (IsRunning)
+            {
+                GameObject focusedObject = CoreServices.InputSystem?.GazeProvider?.GazeTarget;
+                if (focusedObject == null)
+                {
+                    return;
+                }
+
+                // todo
+            }
         }
 
-        /// <inheritdoc />
-        public override void LateUpdate()
-        {
-            base.LateUpdate();
-            // todo
-        }
+        private bool suspendedByDisable = false;
 
         /// <inheritdoc />
         public override void Disable()
         {
-            // todo
+            if (IsRunning)
+            {
+                Suspend();
+                suspendedByDisable = true;
+            }
             base.Disable();
         }
 

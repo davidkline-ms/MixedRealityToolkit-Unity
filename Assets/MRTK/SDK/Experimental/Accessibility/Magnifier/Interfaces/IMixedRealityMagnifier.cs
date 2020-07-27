@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Microsoft.MixedReality.Toolkit.Utilities;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,16 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     public interface IMixedRealityMagnifier : IMixedRealityEventSystem
     {
         /// <summary>
+        /// 
+        /// </summary>
+        AutoStartBehavior StartupBehavior { get; set; }
+
+        /// <summary>
+        /// Typed representation of the ConfigurationProfile property.
+        /// </summary>
+        MixedRealityMagnifierProfile MagnifierProfile { get; }
+
+        /// <summary>
         /// Factor by which holograms will be magnified.
         /// </summary>
         /// <remarks>
@@ -20,6 +31,16 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         /// 50 percent larger. A magnification factor less than 1.0 is not valid and will not be accepted.
         /// </remarks>
         float MagnificationFactor { get; set; }
+
+        /// <summary>
+        /// Holograms must be at least this distance, in meters, from the user in order to be magnified.
+        /// </summary>
+        float MinimumDistance { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not the magnifier is running.
+        /// </summary>
+        bool IsRunning { get; }
 
         // todo: how to suppress magnification for specific objects?
 
