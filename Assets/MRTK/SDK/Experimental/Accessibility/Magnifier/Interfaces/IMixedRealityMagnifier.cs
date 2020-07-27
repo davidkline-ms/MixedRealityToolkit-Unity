@@ -22,9 +22,9 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         float MagnificationFactor { get; set; }
 
         /// <summary>
-        /// Layer that, when appled to a hologram, suppresses magnification.   
+        /// Physics layer that, when appled to a hologram, suppresses magnification.   
         /// </summary>
-        int SuppressMagnificationLayer { get; set; }
+        int SuppressMagnificationPhysicsLayer { get; set; }
 
         /// <summary>
         /// Suspends magnification behavior.

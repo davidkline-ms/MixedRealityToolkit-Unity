@@ -48,6 +48,17 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
             }
         }
 
+        private int suppressMagnificationPhysicsLayer;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SuppressMagnificationPhysicsLayer
+        {
+            get => suppressMagnificationPhysicsLayer;
+            set => SuppressMagnificationPhysicsLayer = value;
+        }
+
         /// <inheritdoc />
         public void Suspend()
         {

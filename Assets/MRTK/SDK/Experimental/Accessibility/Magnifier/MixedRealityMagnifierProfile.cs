@@ -25,15 +25,15 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         public float MagnificationFactor => magnificationFactor;
 
         [SerializeField]
-        [Tooltip("The layer to use for suppressing hologram magnification.")]
-        private int suppressMagnificationLayer = 30;
+        [Tooltip("The physics layer to use for suppressing hologram magnification.")]
+        private int suppressMagnificationPhysicsLayer = 30;
 
         /// <summary>
-        /// The layer to use for suppressing hologramn magnification.
+        /// The physics layer to use for suppressing hologramn magnification.
         /// </summary>
         /// <remarks>
         /// Holograms placed on this layer will not be magnified.
         /// </remarks>
-        public int SuppressMagnificationLayer => suppressMagnificationLayer;
+        public int SuppressMagnificationPhysicsLayer => suppressMagnificationPhysicsLayer;
     }
 }
