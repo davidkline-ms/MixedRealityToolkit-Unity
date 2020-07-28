@@ -38,9 +38,10 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility.Editor
                 serializedObject.Update();
 
                 EditorGUILayout.Space();
-
                 EditorGUILayout.PropertyField(magnificationFactor);
                 EditorGUILayout.PropertyField(minDistance);
+
+                serializedObject.ApplyModifiedProperties();
             }
         }
 
