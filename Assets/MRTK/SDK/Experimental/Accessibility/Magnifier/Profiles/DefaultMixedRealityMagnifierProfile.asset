@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DefaultMixedRealityMagnifierProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  magnificationFactor: 1.5
+  magnificationFactor: 1.64
   minDistance: 0.3

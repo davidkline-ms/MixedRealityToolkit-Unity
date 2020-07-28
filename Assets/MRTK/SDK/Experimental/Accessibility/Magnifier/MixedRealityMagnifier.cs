@@ -9,10 +9,12 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     /// <summary>
     /// 
     /// </summary>
-    public class MixedRealityMagnifier : BaseCoreSystem, IMixedRealityMagnifier
+    public class MixedRealityMagnifier : BaseExtensionService, IMixedRealityMagnifier
     {
         public MixedRealityMagnifier(
-            MixedRealityMagnifierProfile profile = null) : base(profile)
+            string name,
+            uint priority,
+            MixedRealityMagnifierProfile profile = null) : base(name, priority, profile)
         { }
 
         /// <summary>
@@ -34,7 +36,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
 
         private float magnificationFactor;
 
-        private AutoStartBehavior startupBehavior = AutoStartBehavior.ManualStart;
+        private AutoStartBehavior startupBehavior = AutoStartBehavior.AutoStart;
 
         /// <inheritdoc />
         public AutoStartBehavior StartupBehavior
@@ -77,6 +79,17 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         }
 
         private bool isRunning = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public GameObject MagnifiedObject
+        {
+            get => magnifiedObject;
+            private set => magnifiedObject = value;
+        }
+
+        private GameObject magnifiedObject = null;
 
         /// <summary>
         /// 
@@ -151,16 +164,34 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         public override void Update()
         {
             base.Update();
-            
+
             if (IsRunning)
             {
                 GameObject focusedObject = CoreServices.InputSystem?.GazeProvider?.GazeTarget;
                 if (focusedObject == null)
                 {
+                    if (MagnifiedObject != focusedObject)
+                    {
+                        MagnifiedObject.transform.localScale = new Vector3(1, 1, 1);
+                        MagnifiedObject = focusedObject;
+                    }
                     return;
                 }
 
-                // todo
+                if (magnifiedObject == null)
+                {
+                    focusedObject.transform.localScale = new Vector3(magnificationFactor, magnificationFactor, magnificationFactor);
+                }
+                else
+                {
+                    if(MagnifiedObject != focusedObject)
+                    {
+                        MagnifiedObject.transform.localScale = new Vector3(1, 1, 1);
+                        focusedObject.transform.localScale = new Vector3(magnificationFactor, magnificationFactor, magnificationFactor);
+                    }
+                }
+
+                MagnifiedObject = focusedObject;
             }
         }
 

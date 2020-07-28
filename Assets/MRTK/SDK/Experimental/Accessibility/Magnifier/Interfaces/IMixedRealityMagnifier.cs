@@ -10,7 +10,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
     /// <summary>
     /// Interface that defines the Mixed Reality Toolkit hologram magnifier feature.
     /// </summary>
-    public interface IMixedRealityMagnifier : IMixedRealityEventSystem
+    public interface IMixedRealityMagnifier : IMixedRealityExtensionService
     {
         /// <summary>
         /// 
@@ -36,6 +36,11 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.Accessibility
         /// Holograms must be at least this distance, in meters, from the user in order to be magnified.
         /// </summary>
         float MinimumDistance { get; set; }
+
+        /// <summary>
+        /// You can only magnify one object at a time, so this stores the magnified object at the moment.
+        /// </summary>
+        GameObject MagnifiedObject { get; }
 
         /// <summary>
         /// Indicates whether or not the magnifier is running.
