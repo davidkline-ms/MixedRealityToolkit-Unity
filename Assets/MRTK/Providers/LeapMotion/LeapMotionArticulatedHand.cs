@@ -285,6 +285,9 @@ namespace Microsoft.MixedReality.Toolkit.LeapMotion.Input
                             Interactions[i],
                             indexPose);
                         break;
+                    case DeviceInputType.ThumbStick:
+                        handDefinition.UpdateCurrentTeleportPose(Interactions[i]);
+                        break;
                 }
             }
         }

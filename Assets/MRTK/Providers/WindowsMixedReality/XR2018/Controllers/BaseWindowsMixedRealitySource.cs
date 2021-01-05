@@ -70,8 +70,7 @@ namespace Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input
             {
                 if (!Enabled) { return; }
 
-                UpdateSourceData(interactionSourceState);
-                UpdateVelocity(interactionSourceState);
+                UpdateSixDofData(interactionSourceState);
 
                 if (Interactions == null)
                 {
@@ -85,9 +84,6 @@ namespace Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input
                     {
                         case DeviceInputType.None:
                             break;
-                        case DeviceInputType.SpatialPointer:
-                            UpdatePointerData(interactionSourceState, Interactions[i]);
-                            break;
                         case DeviceInputType.Select:
                         case DeviceInputType.Trigger:
                         case DeviceInputType.TriggerTouch:
@@ -95,13 +91,31 @@ namespace Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input
                         case DeviceInputType.GripPress:
                             UpdateTriggerData(interactionSourceState, Interactions[i]);
                             break;
-                        case DeviceInputType.SpatialGrip:
-                            UpdateGripData(interactionSourceState, Interactions[i]);
-                            break;
                     }
                 }
 
                 LastSourceStateReading = interactionSourceState;
+            }
+        }
+
+        protected void UpdateSixDofData(InteractionSourceState interactionSourceState)
+        {
+            UpdateSourceData(interactionSourceState);
+            UpdateVelocity(interactionSourceState);
+
+            for (int i = 0; i < Interactions?.Length; i++)
+            {
+                switch (Interactions[i].InputType)
+                {
+                    case DeviceInputType.None:
+                        break;
+                    case DeviceInputType.SpatialPointer:
+                        UpdatePointerData(interactionSourceState, Interactions[i]);
+                        break;
+                    case DeviceInputType.SpatialGrip:
+                        UpdateGripData(interactionSourceState, Interactions[i]);
+                        break;
+                }
             }
         }
 

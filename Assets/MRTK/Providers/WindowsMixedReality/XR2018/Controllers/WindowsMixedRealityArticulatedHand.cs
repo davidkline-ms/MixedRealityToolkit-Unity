@@ -92,6 +92,9 @@ namespace Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input
                         case DeviceInputType.IndexFinger:
                             handDefinition?.UpdateCurrentIndexPose(Interactions[i]);
                             break;
+                        case DeviceInputType.ThumbStick:
+                            handDefinition?.UpdateCurrentTeleportPose(Interactions[i]);
+                            break;
                     }
                 }
             }

@@ -184,7 +184,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.UnityInput
 
                 var singleAxisValue = UInput.GetAxisRaw(interactionMapping.AxisCodeX);
 
-                if (interactionMapping.InputType == DeviceInputType.TriggerPress)
+                if (interactionMapping.InputType == DeviceInputType.TriggerPress || interactionMapping.InputType == DeviceInputType.GripPress)
                 {
                     bool data = singleAxisValue.Equals(1);
 
