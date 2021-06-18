@@ -1,7 +1,9 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Providers.OpenVR",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit"
+        "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation"
     ],
     "includePlatforms": [
         "Editor",

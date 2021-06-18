@@ -1,9 +1,11 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality",
+    "rootNamespace": "",
     "references": [
         "Microsoft.MixedReality.Toolkit.Async",
         "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Editor.Utilities",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared",
         "Microsoft.MixedReality.Toolkit.Providers.XRSDK",
         "Unity.XR.WindowsMixedReality"

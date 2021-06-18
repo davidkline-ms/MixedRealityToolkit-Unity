@@ -5,6 +5,7 @@
         "Microsoft.MixedReality.OpenXR",
         "Microsoft.MixedReality.Toolkit.Async",
         "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Gltf",
         "Microsoft.MixedReality.Toolkit.Providers.XRSDK",
         "Unity.XR.Management",

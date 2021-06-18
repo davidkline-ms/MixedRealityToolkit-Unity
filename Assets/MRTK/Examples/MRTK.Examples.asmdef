@@ -1,12 +1,14 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Examples",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Async",
-        "Microsoft.MixedReality.Toolkit.SDK",
+        "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Services.InputAnimation",
-        "Microsoft.MixedReality.Toolkit.Services.InputSystem",
+        "Microsoft.MixedReality.Toolkit.SDK",
         "Microsoft.MixedReality.Toolkit.Providers.LeapMotion",
+        "Microsoft.MixedReality.Toolkit.Services.InputSystem",
         "Unity.TextMeshPro",
         "Microsoft.MixedReality.Toolkit.MicStream"
     ],

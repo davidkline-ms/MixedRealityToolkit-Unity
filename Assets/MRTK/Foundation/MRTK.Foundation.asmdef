@@ -1,12 +1,11 @@
 {
-    "name": "Microsoft.MixedReality.Toolkit.Providers.XRSDK",
+    "name": "MRTK.Foundation",
     "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit.Async",
-        "Microsoft.MixedReality.Toolkit",
-        "MRTK.Foundation",
-        "Unity.XR.Management",
-        "UnityEngine.SpatialTracking"
+        "GUID:9fbc8fd1d6852be45a58bd547a8cb17e",
+        "GUID:a7a4c34601384f9389d5c4207f3c6331",
+        "GUID:584b16fd20064a269d31514d588aa585",
+        "GUID:e40ba710768534012815d3193fa296cb"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -14,14 +13,12 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [
-        "UNITY_2019_3_OR_NEWER"
-    ],
+    "defineConstraints": [],
     "versionDefines": [
         {
-            "name": "com.unity.xr.legacyinputhelpers",
+            "name": "com.microsoft.windows.mixedreality.dotnetwinrt",
             "expression": "",
-            "define": "SPATIALTRACKING_ENABLED"
+            "define": "DOTNETWINRT_PRESENT"
         },
         {
             "name": "com.unity.xr.management",

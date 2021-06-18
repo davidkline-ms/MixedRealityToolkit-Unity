@@ -1,15 +1,18 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Services.InputSystem",
+    "rootNamespace": "",
     "references": [
+        "Microsoft.MixedReality.Toolkit.Async",
         "Microsoft.MixedReality.Toolkit",
-        "Microsoft.MixedReality.Toolkit.Async"
+        "MRTK.Foundation"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

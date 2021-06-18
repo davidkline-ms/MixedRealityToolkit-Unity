@@ -1,16 +1,17 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Tools",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Editor.BuildAndDeploy",
-        "Microsoft.MixedReality.Toolkit.Editor.Inspectors",
+        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Editor.Utilities",
-        "Microsoft.MixedReality.Toolkit.SDK.Editor",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Services.InputSystem",
+        "Microsoft.MixedReality.Toolkit.Editor.Inspectors",
+        "Microsoft.MixedReality.Toolkit.SDK.Editor",
         "Microsoft.MixedReality.Toolkit.Tools.Runtime",
         "Unity.TextMeshPro"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -19,5 +20,7 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -1,17 +1,18 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Providers.WindowsSceneUnderstanding",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Async",
+        "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared",
+        "Microsoft.MixedReality.Toolkit.Providers.XRSDK",
         "Microsoft.MixedReality.SceneUnderstanding.Projections.Editor",
         "Microsoft.MixedReality.SceneUnderstanding.Projections.WSA",
         "Microsoft.MixedReality.OpenXR",
-        "Microsoft.MixedReality.Toolkit.Providers.XRSDK",
         "Unity.XR.Management",
         "Unity.XR.OpenXR"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor",
         "WSA"

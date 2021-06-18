@@ -1,9 +1,11 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.SDK",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Async",
+        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Editor.Utilities",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Services.InputAnimation",
         "Microsoft.MixedReality.Toolkit.Services.InputSimulation",
         "Microsoft.MixedReality.Toolkit.Services.InputSystem",

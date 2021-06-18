@@ -1,14 +1,16 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Tests.Utilities",
+    "rootNamespace": "",
     "references": [
-        "Microsoft.MixedReality.Toolkit",
         "Microsoft.MixedReality.Toolkit.Async",
+        "Microsoft.MixedReality.Toolkit",
+        "Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem",
         "Microsoft.MixedReality.Toolkit.Editor.ClassExtensions",
         "Microsoft.MixedReality.Toolkit.Editor.Utilities",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Services.InputSimulation",
         "Microsoft.MixedReality.Toolkit.Services.InputSimulation.Editor",
         "Microsoft.MixedReality.Toolkit.Services.InputSystem",
-        "Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem",
         "Microsoft.MixedReality.Toolkit.Editor.Inspectors"
     ],
     "includePlatforms": [],

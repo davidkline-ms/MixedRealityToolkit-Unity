@@ -1,15 +1,18 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService",
+    "rootNamespace": "",
     "references": [
         "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.SDK"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

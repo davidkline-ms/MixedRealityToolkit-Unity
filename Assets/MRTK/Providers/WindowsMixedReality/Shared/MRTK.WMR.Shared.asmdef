@@ -1,7 +1,9 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared",
+    "rootNamespace": "",
     "references": [
         "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Microsoft.MixedReality.Toolkit.Gltf"
     ],
     "includePlatforms": [

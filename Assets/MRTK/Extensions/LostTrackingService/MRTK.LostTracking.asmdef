@@ -1,7 +1,9 @@
 {
     "name": "Microsoft.MixedReality.Toolkit.Extensions.Tracking",
+    "rootNamespace": "",
     "references": [
         "Microsoft.MixedReality.Toolkit",
+        "MRTK.Foundation",
         "Unity.XR.ARSubsystems"
     ],
     "includePlatforms": [],
